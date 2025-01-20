@@ -12,3 +12,4 @@
 
 - **`ci-cd/`**: Contains CI/CD pipeline configurations, such as `github-actions.yml`, to automate testing, deployment, and integration processes.
 
+- Added a `.gitkeep` file to folders to ensure that Git tracks the empty directory.
