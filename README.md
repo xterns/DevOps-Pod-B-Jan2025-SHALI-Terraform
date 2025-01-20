@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 # DevOps-Pod-B-Jan2025-SHALI-Terraform
 
 **Folder Structure Overview:**
@@ -13,3 +14,6 @@
 - **`ci-cd/`**: Contains CI/CD pipeline configurations, such as `github-actions.yml`, to automate testing, deployment, and integration processes.
 
 - Added a `.gitkeep` file to folders to ensure that Git tracks the empty directory.
+=======
+# DevOps-Pod-B-Jan2025-SHALI-Terraform
+>>>>>>> 825e9dcc14b96a461934ce713e3cc5876063b059
