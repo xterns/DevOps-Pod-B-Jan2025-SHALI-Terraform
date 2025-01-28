@@ -34,7 +34,7 @@ variable "preferred_number_of_private_subnets" {
 
 variable "name" {
   type    = string
-  default = "narbyd"
+  default = "shali"
 
 }
 
@@ -92,4 +92,27 @@ variable "master-password" {
   type        = string
   description = "RDS master password"
 }
+
+variable "shali-project-trials" {
+  description = "1467452"
+  type        = number
+}
+
+variable "acl" {
+  description = "The access control list for the S3 bucket"
+  type        = string
+  default     = "private"
+}
+
+variable "versioning_enabled" {
+  description = "Whether to enable versioning for the S3 bucket"
+  type        = bool
+  default     = false
+}
+
+
+
+
+
+
 

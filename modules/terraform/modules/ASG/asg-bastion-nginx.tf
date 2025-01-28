@@ -5,13 +5,13 @@ data "aws_availability_zones" "available" {
 
 
 # creating sns topic for all the auto scaling groups
-resource "aws_sns_topic" "narbyd-sns" {
+resource "aws_sns_topic" "shali-sns" {
   name = "Default_CloudWatch_Alarms_Topic"
 }
 
 
 # creating notification for all the auto scaling groups
-resource "aws_autoscaling_notification" "narbyd_notifications" {
+resource "aws_autoscaling_notification" "shali_notifications" {
   group_names = [
     aws_autoscaling_group.bastion-asg.name,
     aws_autoscaling_group.nginx-asg.name,
@@ -25,7 +25,7 @@ resource "aws_autoscaling_notification" "narbyd_notifications" {
     "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
   ]
 
-  topic_arn = aws_sns_topic.narbyd-sns.arn
+  topic_arn = aws_sns_topic.shali-sns.arn
 }
 
 
@@ -56,7 +56,7 @@ resource "aws_autoscaling_group" "bastion-asg" {
   }
   tag {
     key                 = "Name"
-    value               = "narbyd-bastion"
+    value               = "shali-bastion"
     propagate_at_launch = true
   }
 
@@ -84,7 +84,7 @@ resource "aws_autoscaling_group" "nginx-asg" {
 
   tag {
     key                 = "Name"
-    value               = "narbyd-nginx"
+    value               = "shali-nginx"
     propagate_at_launch = true
   }
 

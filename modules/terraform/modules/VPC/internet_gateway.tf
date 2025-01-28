@@ -1,5 +1,5 @@
-resource "aws_internet_gateway" "narbyd-ig" {
-  vpc_id = aws_vpc.narbyd-vpc.id
+resource "aws_internet_gateway" "shali-ig" {
+  vpc_id = aws_vpc.shali-vpc.id
 
   tags = merge(
     var.tags,

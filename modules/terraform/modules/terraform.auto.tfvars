@@ -24,16 +24,5 @@ ami-nginx = "ami-0df552f7c96a35ad6"
 
 ami-sonar = "ami-0e91d6f4b75361cfb"
 
-keypair = "dybran-ec2"
+keypair = "shali-ec2"
 
-master-password = "Sa4la2xa###"
-
-master-username = "narbyd"
-
-account_no = "939895954199"
-
-tags = {
-  Owner-Email     = "onwuasoanyasc@gmail.com"
-  Managed-By      = "Terraform"
-  Billing-Account = "939895954199"
-}

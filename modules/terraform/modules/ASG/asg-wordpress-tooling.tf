@@ -16,7 +16,7 @@ resource "aws_autoscaling_group" "wordpress-asg" {
   }
   tag {
     key                 = "Name"
-    value               = "narbyd-wordpress"
+    value               = "shali-wordpress"
     propagate_at_launch = true
   }
 }
@@ -48,7 +48,7 @@ resource "aws_autoscaling_group" "tooling-asg" {
 
   tag {
     key                 = "Name"
-    value               = "narbyd-tooling"
+    value               = "shali-tooling"
     propagate_at_launch = true
   }
 }

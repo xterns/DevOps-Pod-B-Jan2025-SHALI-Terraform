@@ -46,9 +46,10 @@ variable "tags" {
 
 variable "name" {
   type    = string
-  default = "narbyd"
+  default = "shali"
 
 }
 variable "environment" {
   default = "true"
 }
+
