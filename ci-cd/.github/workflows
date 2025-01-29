@@ -50,6 +50,3 @@ jobs:
       - name: Apply Terraform Changes to Production
         if: github.ref_name == 'main' && github.event_name == 'push'
         run: terraform apply -var-file="production.tfvars"
-
-
-        feature/TDP_113-Initialize-github-actions-ci/cd-pipeline-for-terraform
