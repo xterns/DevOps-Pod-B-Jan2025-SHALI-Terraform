@@ -5,13 +5,45 @@ data "aws_availability_zones" "available" {
 
 
 # creating sns topic for all the auto scaling groups
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 resource "aws_sns_topic" "shali-sns" {
+=======
+resource "aws_sns_topic" "narbyd-sns" {
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+resource "aws_sns_topic" "shali-sns" {
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+resource "aws_sns_topic" "narbyd-sns" {
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+resource "aws_sns_topic" "shali-sns" {
+>>>>>>> 1e0584b (first commit on this shali project updated)
   name = "Default_CloudWatch_Alarms_Topic"
 }
 
 
 # creating notification for all the auto scaling groups
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 resource "aws_autoscaling_notification" "shali_notifications" {
+=======
+resource "aws_autoscaling_notification" "narbyd_notifications" {
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+resource "aws_autoscaling_notification" "shali_notifications" {
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+resource "aws_autoscaling_notification" "narbyd_notifications" {
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+resource "aws_autoscaling_notification" "shali_notifications" {
+>>>>>>> 1e0584b (first commit on this shali project updated)
   group_names = [
     aws_autoscaling_group.bastion-asg.name,
     aws_autoscaling_group.nginx-asg.name,
@@ -25,7 +57,23 @@ resource "aws_autoscaling_notification" "shali_notifications" {
     "autoscaling:EC2_INSTANCE_TERMINATE_ERROR",
   ]
 
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   topic_arn = aws_sns_topic.shali-sns.arn
+=======
+  topic_arn = aws_sns_topic.narbyd-sns.arn
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  topic_arn = aws_sns_topic.shali-sns.arn
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  topic_arn = aws_sns_topic.narbyd-sns.arn
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  topic_arn = aws_sns_topic.shali-sns.arn
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 
@@ -56,7 +104,23 @@ resource "aws_autoscaling_group" "bastion-asg" {
   }
   tag {
     key                 = "Name"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     value               = "shali-bastion"
+=======
+    value               = "narbyd-bastion"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+    value               = "shali-bastion"
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+    value               = "narbyd-bastion"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+    value               = "shali-bastion"
+>>>>>>> 1e0584b (first commit on this shali project updated)
     propagate_at_launch = true
   }
 
@@ -84,7 +148,23 @@ resource "aws_autoscaling_group" "nginx-asg" {
 
   tag {
     key                 = "Name"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     value               = "shali-nginx"
+=======
+    value               = "narbyd-nginx"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+    value               = "shali-nginx"
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+    value               = "narbyd-nginx"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+    value               = "shali-nginx"
+>>>>>>> 1e0584b (first commit on this shali project updated)
     propagate_at_launch = true
   }
 

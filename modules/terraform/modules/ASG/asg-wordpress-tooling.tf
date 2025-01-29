@@ -16,7 +16,23 @@ resource "aws_autoscaling_group" "wordpress-asg" {
   }
   tag {
     key                 = "Name"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     value               = "shali-wordpress"
+=======
+    value               = "narbyd-wordpress"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+    value               = "shali-wordpress"
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+    value               = "narbyd-wordpress"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+    value               = "shali-wordpress"
+>>>>>>> 1e0584b (first commit on this shali project updated)
     propagate_at_launch = true
   }
 }
@@ -48,7 +64,23 @@ resource "aws_autoscaling_group" "tooling-asg" {
 
   tag {
     key                 = "Name"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     value               = "shali-tooling"
+=======
+    value               = "narbyd-tooling"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+    value               = "shali-tooling"
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+    value               = "narbyd-tooling"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+    value               = "shali-tooling"
+>>>>>>> 1e0584b (first commit on this shali project updated)
     propagate_at_launch = true
   }
 }

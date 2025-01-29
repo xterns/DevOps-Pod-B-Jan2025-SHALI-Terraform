@@ -34,3 +34,15 @@ This repository contains Terraform scripts for managing the infrastructure for t
 5. Run a plan to preview changes:
     ```bash
     terraform plan
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> folder
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+>>>>>>> 6afa60f (Initial commit: Add CHANGELOG and update documentation)
+Just this
+=======
+>>>>>>> folder
+>>>>>>> 1e0584b (first commit on this shali project updated)

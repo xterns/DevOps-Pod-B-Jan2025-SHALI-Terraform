@@ -5,7 +5,23 @@ resource "aws_security_group_rule" "inbound-alb-http" {
   to_port           = 80
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   security_group_id = aws_security_group.shali["ext-alb-sg"].id
+=======
+  security_group_id = aws_security_group.narbyd["ext-alb-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["ext-alb-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  security_group_id = aws_security_group.narbyd["ext-alb-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["ext-alb-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 resource "aws_security_group_rule" "inbound-alb-https" {
@@ -14,7 +30,23 @@ resource "aws_security_group_rule" "inbound-alb-https" {
   to_port           = 443
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   security_group_id = aws_security_group.shali["ext-alb-sg"].id
+=======
+  security_group_id = aws_security_group.narbyd["ext-alb-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["ext-alb-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  security_group_id = aws_security_group.narbyd["ext-alb-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["ext-alb-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 
@@ -24,8 +56,28 @@ resource "aws_security_group_rule" "inbound-bastion-ssh-compute" {
   protocol          = "tcp"
   to_port           = 22
   type              = "ingress"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   source_security_group_id = aws_security_group.shali["bastion-sg"].id
   security_group_id = aws_security_group.shali["compute-sg"].id
+=======
+  source_security_group_id = aws_security_group.narbyd["bastion-sg"].id
+  security_group_id = aws_security_group.narbyd["compute-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["bastion-sg"].id
+  security_group_id = aws_security_group.shali["compute-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  source_security_group_id = aws_security_group.narbyd["bastion-sg"].id
+  security_group_id = aws_security_group.narbyd["compute-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["bastion-sg"].id
+  security_group_id = aws_security_group.shali["compute-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 resource "aws_security_group_rule" "inbound-port-artifcatory" {
@@ -34,7 +86,23 @@ resource "aws_security_group_rule" "inbound-port-artifcatory" {
   to_port           = 8081
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   security_group_id = aws_security_group.shali["compute-sg"].id
+=======
+  security_group_id = aws_security_group.narbyd["compute-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["compute-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  security_group_id = aws_security_group.narbyd["compute-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["compute-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 resource "aws_security_group_rule" "inbound-port-jenkins" {
@@ -43,7 +111,23 @@ resource "aws_security_group_rule" "inbound-port-jenkins" {
   to_port           = 8080
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   security_group_id = aws_security_group.shali["compute-sg"].id
+=======
+  security_group_id = aws_security_group.narbyd["compute-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["compute-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  security_group_id = aws_security_group.narbyd["compute-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["compute-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 resource "aws_security_group_rule" "inbound-port-sonarqube" {
@@ -52,7 +136,23 @@ resource "aws_security_group_rule" "inbound-port-sonarqube" {
   to_port           = 9000
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   security_group_id = aws_security_group.shali["ext-alb-sg"].id
+=======
+  security_group_id = aws_security_group.narbyd["ext-alb-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["ext-alb-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  security_group_id = aws_security_group.narbyd["ext-alb-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["ext-alb-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 # security group rule for bastion to allow arssh access fro your local machine
@@ -62,7 +162,23 @@ resource "aws_security_group_rule" "inbound-ssh-bastion" {
   to_port           = 22
   type              = "ingress"
   cidr_blocks       = ["0.0.0.0/0"]
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   security_group_id = aws_security_group.shali["bastion-sg"].id
+=======
+  security_group_id = aws_security_group.narbyd["bastion-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["bastion-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  security_group_id = aws_security_group.narbyd["bastion-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  security_group_id = aws_security_group.shali["bastion-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 
@@ -73,8 +189,28 @@ resource "aws_security_group_rule" "inbound-nginx-http" {
   from_port                = 443
   to_port                  = 443
   protocol                 = "tcp"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   source_security_group_id = aws_security_group.shali["ext-alb-sg"].id
   security_group_id        = aws_security_group.shali["nginx-sg"].id
+=======
+  source_security_group_id = aws_security_group.narbyd["ext-alb-sg"].id
+  security_group_id        = aws_security_group.narbyd["nginx-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["ext-alb-sg"].id
+  security_group_id        = aws_security_group.shali["nginx-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  source_security_group_id = aws_security_group.narbyd["ext-alb-sg"].id
+  security_group_id        = aws_security_group.narbyd["nginx-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["ext-alb-sg"].id
+  security_group_id        = aws_security_group.shali["nginx-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 
@@ -83,8 +219,28 @@ resource "aws_security_group_rule" "inbound-bastion-ssh" {
   from_port                = 22
   to_port                  = 22
   protocol                 = "tcp"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   source_security_group_id = aws_security_group.shali["bastion-sg"].id
   security_group_id        = aws_security_group.shali["nginx-sg"].id
+=======
+  source_security_group_id = aws_security_group.narbyd["bastion-sg"].id
+  security_group_id        = aws_security_group.narbyd["nginx-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["bastion-sg"].id
+  security_group_id        = aws_security_group.shali["nginx-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  source_security_group_id = aws_security_group.narbyd["bastion-sg"].id
+  security_group_id        = aws_security_group.narbyd["nginx-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["bastion-sg"].id
+  security_group_id        = aws_security_group.shali["nginx-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 
@@ -96,8 +252,28 @@ resource "aws_security_group_rule" "inbound-ialb-https" {
   from_port                = 443
   to_port                  = 443
   protocol                 = "tcp"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   source_security_group_id = aws_security_group.shali["nginx-sg"].id
   security_group_id        = aws_security_group.shali["int-alb-sg"].id
+=======
+  source_security_group_id = aws_security_group.narbyd["nginx-sg"].id
+  security_group_id        = aws_security_group.narbyd["int-alb-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["nginx-sg"].id
+  security_group_id        = aws_security_group.shali["int-alb-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  source_security_group_id = aws_security_group.narbyd["nginx-sg"].id
+  security_group_id        = aws_security_group.narbyd["int-alb-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["nginx-sg"].id
+  security_group_id        = aws_security_group.shali["int-alb-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 
@@ -109,8 +285,28 @@ resource "aws_security_group_rule" "inbound-web-https" {
   from_port                = 443
   to_port                  = 443
   protocol                 = "tcp"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   source_security_group_id = aws_security_group.shali["int-alb-sg"].id
   security_group_id        = aws_security_group.shali["webserver-sg"].id
+=======
+  source_security_group_id = aws_security_group.narbyd["int-alb-sg"].id
+  security_group_id        = aws_security_group.narbyd["webserver-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["int-alb-sg"].id
+  security_group_id        = aws_security_group.shali["webserver-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  source_security_group_id = aws_security_group.narbyd["int-alb-sg"].id
+  security_group_id        = aws_security_group.narbyd["webserver-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["int-alb-sg"].id
+  security_group_id        = aws_security_group.shali["webserver-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 resource "aws_security_group_rule" "inbound-web-ssh" {
@@ -118,8 +314,28 @@ resource "aws_security_group_rule" "inbound-web-ssh" {
   from_port                = 22
   to_port                  = 22
   protocol                 = "tcp"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   source_security_group_id = aws_security_group.shali["bastion-sg"].id
   security_group_id        = aws_security_group.shali["webserver-sg"].id
+=======
+  source_security_group_id = aws_security_group.narbyd["bastion-sg"].id
+  security_group_id        = aws_security_group.narbyd["webserver-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["bastion-sg"].id
+  security_group_id        = aws_security_group.shali["webserver-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  source_security_group_id = aws_security_group.narbyd["bastion-sg"].id
+  security_group_id        = aws_security_group.narbyd["webserver-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["bastion-sg"].id
+  security_group_id        = aws_security_group.shali["webserver-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 
@@ -130,8 +346,28 @@ resource "aws_security_group_rule" "inbound-nfs-port" {
   from_port                = 2049
   to_port                  = 2049
   protocol                 = "tcp"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   source_security_group_id = aws_security_group.shali["webserver-sg"].id
   security_group_id        = aws_security_group.shali["datalayer-sg"].id
+=======
+  source_security_group_id = aws_security_group.narbyd["webserver-sg"].id
+  security_group_id        = aws_security_group.narbyd["datalayer-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["webserver-sg"].id
+  security_group_id        = aws_security_group.shali["datalayer-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  source_security_group_id = aws_security_group.narbyd["webserver-sg"].id
+  security_group_id        = aws_security_group.narbyd["datalayer-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["webserver-sg"].id
+  security_group_id        = aws_security_group.shali["datalayer-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 resource "aws_security_group_rule" "inbound-mysql-bastion" {
@@ -139,8 +375,28 @@ resource "aws_security_group_rule" "inbound-mysql-bastion" {
   from_port                = 3306
   to_port                  = 3306
   protocol                 = "tcp"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   source_security_group_id = aws_security_group.shali["bastion-sg"].id
   security_group_id        = aws_security_group.shali["datalayer-sg"].id
+=======
+  source_security_group_id = aws_security_group.narbyd["bastion-sg"].id
+  security_group_id        = aws_security_group.narbyd["datalayer-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["bastion-sg"].id
+  security_group_id        = aws_security_group.shali["datalayer-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  source_security_group_id = aws_security_group.narbyd["bastion-sg"].id
+  security_group_id        = aws_security_group.narbyd["datalayer-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["bastion-sg"].id
+  security_group_id        = aws_security_group.shali["datalayer-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 resource "aws_security_group_rule" "inbound-mysql-webserver" {
@@ -148,8 +404,28 @@ resource "aws_security_group_rule" "inbound-mysql-webserver" {
   from_port                = 3306
   to_port                  = 3306
   protocol                 = "tcp"
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   source_security_group_id = aws_security_group.shali["webserver-sg"].id
   security_group_id        = aws_security_group.shali["datalayer-sg"].id
+=======
+  source_security_group_id = aws_security_group.narbyd["webserver-sg"].id
+  security_group_id        = aws_security_group.narbyd["datalayer-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["webserver-sg"].id
+  security_group_id        = aws_security_group.shali["datalayer-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+  source_security_group_id = aws_security_group.narbyd["webserver-sg"].id
+  security_group_id        = aws_security_group.narbyd["datalayer-sg"].id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  source_security_group_id = aws_security_group.shali["webserver-sg"].id
+  security_group_id        = aws_security_group.shali["datalayer-sg"].id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 }
 
 

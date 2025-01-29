@@ -10,7 +10,23 @@ resource "aws_instance" "Jenkins" {
  tags = merge(
     var.tags,
     {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       Name = "shali-Jenkins"
+=======
+      Name = "narbyd-Jenkins"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+      Name = "shali-Jenkins"
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+      Name = "narbyd-Jenkins"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+      Name = "shali-Jenkins"
+>>>>>>> 1e0584b (first commit on this shali project updated)
     },
   )
 }
@@ -29,7 +45,23 @@ resource "aws_instance" "sonbarqube" {
    tags = merge(
     var.tags,
     {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       Name = "shali-sonarqube"
+=======
+      Name = "narbyd-sonarqube"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+      Name = "shali-sonarqube"
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+      Name = "narbyd-sonarqube"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+      Name = "shali-sonarqube"
+>>>>>>> 1e0584b (first commit on this shali project updated)
     },
   )
 }
@@ -47,7 +79,23 @@ resource "aws_instance" "artifactory" {
   tags = merge(
     var.tags,
     {
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
       Name = "shali-artifactory"
+=======
+      Name = "narbyd-artifactory"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+      Name = "shali-artifactory"
+>>>>>>> 1e0584b (first commit on this shali project updated)
+=======
+      Name = "narbyd-artifactory"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+      Name = "shali-artifactory"
+>>>>>>> 1e0584b (first commit on this shali project updated)
     },
   )
 }

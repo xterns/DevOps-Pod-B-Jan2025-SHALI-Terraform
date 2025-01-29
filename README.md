@@ -34,3 +34,7 @@ This repository contains Terraform scripts for managing the infrastructure for t
 5. Run a plan to preview changes:
     ```bash
     terraform plan
+<<<<<<< HEAD
+=======
+>>>>>>> folder
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
