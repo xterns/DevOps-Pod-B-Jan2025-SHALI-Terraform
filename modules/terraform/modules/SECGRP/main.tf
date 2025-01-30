@@ -3,7 +3,15 @@
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 resource "aws_security_group" "shali" {
+=======
+resource "aws_security_group" "narbyd" {
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+resource "aws_security_group" "shali" {
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
 resource "aws_security_group" "narbyd" {
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)

@@ -4,7 +4,15 @@ resource "aws_route_table" "private-rtb" {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   vpc_id = aws_vpc.shali-vpc
+=======
+  vpc_id = aws_vpc.narbyd-vpc.id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  vpc_id = aws_vpc.shali-vpc
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
   vpc_id = aws_vpc.narbyd-vpc.id
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
@@ -49,7 +57,15 @@ resource "aws_route_table" "public-rtb" {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   vpc_id = aws_vpc.shali-vpc
+=======
+  vpc_id = aws_vpc.narbyd-vpc.id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  vpc_id = aws_vpc.shali-vpc
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
   vpc_id = aws_vpc.narbyd-vpc.id
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
@@ -79,7 +95,15 @@ resource "aws_route" "public-rtb-route" {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   gateway_id             = aws_internet_gateway.shaliaws_vpc.shali-vpc-ig.id
+=======
+  gateway_id             = aws_internet_gateway.narbyd-ig.id
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  gateway_id             = aws_internet_gateway.shaliaws_vpc.shali-vpc-ig.id
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
   gateway_id             = aws_internet_gateway.narbyd-ig.id
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)

@@ -37,12 +37,16 @@ This repository contains Terraform scripts for managing the infrastructure for t
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
 =======
 >>>>>>> folder
 >>>>>>> 1e0584b (first commit on this shali project updated)
 =======
 >>>>>>> 6afa60f (Initial commit: Add CHANGELOG and update documentation)
 Just this
+=======
+>>>>>>> folder
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
 >>>>>>> folder
 >>>>>>> 1e0584b (first commit on this shali project updated)

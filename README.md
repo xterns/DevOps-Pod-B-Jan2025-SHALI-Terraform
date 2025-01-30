@@ -35,6 +35,10 @@ This repository contains Terraform scripts for managing the infrastructure for t
     ```bash
     terraform plan
 <<<<<<< HEAD
+<<<<<<< HEAD
+=======
+>>>>>>> folder
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
 =======
 >>>>>>> folder
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)

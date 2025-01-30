@@ -50,7 +50,15 @@ variable "name" {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   default = "shali"
+=======
+  default = "narbyd"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  default = "shali"
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
   default = "narbyd"
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
@@ -71,8 +79,17 @@ variable "environment" {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 }
 
+=======
+}
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+}
+
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
 }
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)

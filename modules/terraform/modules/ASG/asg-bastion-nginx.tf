@@ -9,7 +9,15 @@ data "aws_availability_zones" "available" {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 resource "aws_sns_topic" "shali-sns" {
+=======
+resource "aws_sns_topic" "narbyd-sns" {
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+resource "aws_sns_topic" "shali-sns" {
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
 resource "aws_sns_topic" "narbyd-sns" {
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
@@ -31,7 +39,15 @@ resource "aws_sns_topic" "shali-sns" {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
 resource "aws_autoscaling_notification" "shali_notifications" {
+=======
+resource "aws_autoscaling_notification" "narbyd_notifications" {
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+resource "aws_autoscaling_notification" "shali_notifications" {
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
 resource "aws_autoscaling_notification" "narbyd_notifications" {
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
@@ -61,7 +77,15 @@ resource "aws_autoscaling_notification" "shali_notifications" {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
   topic_arn = aws_sns_topic.shali-sns.arn
+=======
+  topic_arn = aws_sns_topic.narbyd-sns.arn
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+  topic_arn = aws_sns_topic.shali-sns.arn
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
   topic_arn = aws_sns_topic.narbyd-sns.arn
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
@@ -108,7 +132,15 @@ resource "aws_autoscaling_group" "bastion-asg" {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     value               = "shali-bastion"
+=======
+    value               = "narbyd-bastion"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+    value               = "shali-bastion"
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
     value               = "narbyd-bastion"
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
@@ -152,7 +184,15 @@ resource "aws_autoscaling_group" "nginx-asg" {
 <<<<<<< HEAD
 <<<<<<< HEAD
 <<<<<<< HEAD
+<<<<<<< HEAD
+<<<<<<< HEAD
     value               = "shali-nginx"
+=======
+    value               = "narbyd-nginx"
+>>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
+=======
+    value               = "shali-nginx"
+>>>>>>> 1e0584b (first commit on this shali project updated)
 =======
     value               = "narbyd-nginx"
 >>>>>>> 154ecd7 (Initial commit: Set up project structure with Terraform configuration, CI/CD, and documentation.)
