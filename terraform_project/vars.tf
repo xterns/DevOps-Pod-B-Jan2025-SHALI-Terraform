@@ -94,8 +94,8 @@ variable "master-password" {
 }
 
 variable "shali-project-trials" {
-  description = "1467452"
-  type        = number
+  description = "LockID"
+  type        = string
 }
 
 variable "acl" {
