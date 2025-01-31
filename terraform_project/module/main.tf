@@ -68,14 +68,28 @@ module "EFS" {
   account_no   = var.account_no
 }
 
-# RDS module; this module will create the RDS instance in the private subnet
 
-module "RDS" {
-  source          = "./module/RDS"
-  db-password     = var.master-password
-  db-username     = var.master-username
-  db-sg           = [module.SECGRP.datalayer-sg]
-  private_subnets = [module.VPC.private_subnets-3, module.VPC.private_subnets-4]
+module "s3_backend" {
+  source = "./modules/s3-backend"
+
+  bucket_name          = "shali-project-trials"
+  enable_dynamodb_lock = true
+  dynamodb_table_name  = "shali-project-trials"
+  tags = {
+    Environment = "Production"
+    Team        = "Shali-Project"
+  }
+}
+
+# Configure Terraform to use the S3 backend
+terraform {
+  backend "s3" {
+    bucket         = module.s3_backend.s3_bucket_name
+    key            = "global/s3/terraform.tfstate"
+    region         = "us-east-1"
+    encrypt        = true
+    dynamodb_table = module.s3_backend.dynamodb_table_name
+  }
 }
 
 # The Module creates instances for jenkins, sonarqube abd jfrog
@@ -94,6 +108,37 @@ module "packer_ami" {
   region           = "us-east-1"
   ami_name_pattern = "my-packer-ami-*"
   owner_id         = "058264206227" # Replace with your AWS account ID
+}
+
+
+module "ec2_instances" {
+  source = "./modules/ec2-instance"
+
+  ami_owner_id     = "058264206227" # Replace with your AWS account ID
+  ami_name_pattern = "my-packer-ami-*"
+  ami_tags = {
+    Environment = "Production"
+    BuiltWith   = "Packer"
+  }
+
+  instance_count = 2
+  instance_type  = "t2.micro"
+  subnet_id      = "subnet-0123456789abcdef0"
+  key_name       = "my-key-pair"
+  name_prefix    = "my-app"
+  tags = {
+    Environment = "Production"
+    Team        = "DevOps"
+  }
+}
+
+# Output the instance IDs and AMI ID
+output "instance_ids" {
+  value = module.ec2_instances.instance_ids
+}
+
+output "ami_id" {
+  value = module.ec2_instances.ami_id
 }
 
 resource "aws_instance" "example" {
