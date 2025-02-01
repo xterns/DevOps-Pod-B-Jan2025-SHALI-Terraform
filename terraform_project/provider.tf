@@ -5,23 +5,22 @@ terraform {
     }
   }
 }
-
+# Specify the provider
 provider "aws" {
   region = "us-east-1"
 }
 
-resource "aws_instance" "example" {
-  # ami           = "ami-0c55b159cbfafe1f0"
-  instance_type = "t2.micro"
+data "aws_ami" "amazon_linux" {
+  most_recent = true
+  owners      = ["amazon"]
+
+  filter {
+    name   = "name"
+    values = ["amzn2-ami-hvm-*-x86_64-gp2"]
+  }
 }
 
-
-# Create a resource (an EC2 instance in this case)
-resource "aws_instance" "Shali" {
-  # ami           = "ami-0c55b159cbfafe1f0" # Replace with your preferred AMI ID
+resource "aws_instance" "example" {
+  ami           = data.aws_ami.amazon_linux.id
   instance_type = "t2.micro"
-
-  tags = {
-    Name = "SHALI-POD-B-JAN2025"
-  }
 }

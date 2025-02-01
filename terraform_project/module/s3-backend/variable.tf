@@ -1,5 +1,5 @@
 variable "bucket_name" {
-  description = "shali-project-trials"
+  description = "shalibucket"
   type        = string
 }
 

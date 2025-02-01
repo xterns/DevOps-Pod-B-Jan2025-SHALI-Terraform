@@ -104,16 +104,16 @@ module "EFS" {
 module "s3_backend" {
   source = "./modules/s3-backend"
 
-  bucket_name          = "shali-project-trials"
+  bucket_name          = "shaliprojectbucket"
   enable_dynamodb_lock = true
-  dynamodb_table_name  = "shali-project-trials"
+  dynamodb_table_name  = "shaliprojectbucket"
   tags = {
     Environment = "Production"
-    Team        = "Shali-Project"
+    Team        = "Shali-team"
   }
 }
 
-# Configure Terraform to use the S3 backend
+# # Configure Terraform to use the S3 backend
 terraform {
   backend "s3" {
     bucket         = module.s3_backend.s3_bucket_name
