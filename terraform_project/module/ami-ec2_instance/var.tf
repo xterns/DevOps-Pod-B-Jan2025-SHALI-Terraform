@@ -1,48 +1,27 @@
-variable "ami_owner_id" {
-  description = "058264206227"
-  type        = string
-}
-
 variable "ami_name_pattern" {
-  description = "Shali-packer-ami-*"
+  description = "The name pattern of the AMI created with Packer (e.g., 'my-packer-ami-*')"
   type        = string
 }
 
-variable "ami_tags" {
-  description = "Tags used to filter AMIs"
-  type        = map(string)
-  default     = {}
-}
-
-variable "instance_count" {
-  description = "Number of EC2 instances to create"
-  type        = number
-  default     = 1
+variable "ami_owner" {
+  description = "The owner of the AMI (e.g., 'self' for your AWS account)"
+  type        = string
+  default     = "self"
 }
 
 variable "instance_type" {
-  description = "The type of EC2 instance (e.g., t2.micro)"
+  description = "The type of EC2 instance to launch (e.g., 't2.micro')"
   type        = string
   default     = "t2.micro"
 }
 
-variable "subnet_id" {
-  description = "The subnet ID where the EC2 instances will be launched"
-  type        = string
-}
-
-variable "key_name" {
-  description = "The name of the key pair to associate with the instances"
-  type        = string
-}
-
-variable "name_prefix" {
-  description = "Prefix for naming resources"
+variable "instance_name" {
+  description = "The name tag for the EC2 instance"
   type        = string
 }
 
 variable "tags" {
-  description = "A map of tags to apply to resources"
+  description = "Additional tags to apply to the EC2 instance"
   type        = map(string)
   default     = {}
 }

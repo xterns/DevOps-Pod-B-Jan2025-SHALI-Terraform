@@ -1,3 +1,35 @@
+
+
+# provider "aws" {
+#   region = "us-east-1"  # Replace with your desired AWS region
+# }
+
+module "ec2_instance" {
+  source = "./modules/ec2-instance"  # Path to the module
+
+  ami_name_pattern = "my-packer-ami-*"  # Replace with your Packer AMI name pattern
+  ami_owner        = "self"             # Replace with the AMI owner (e.g., "self" or an AWS account ID)
+  instance_type    = "t2.micro"         # Replace with your desired instance type
+  instance_name    = "example-instance" # Replace with your desired instance name
+  tags = {
+    Environment = "dev"
+    Project     = "Shali-projects"
+  }
+}
+
+output "instance_id" {
+  value = module.ec2_instance.instance_id
+}
+
+output "instance_public_ip" {
+  value = module.ec2_instance.instance_public_ip
+}
+
+output "ami_id" {
+  value = module.ec2_instance.ami_id
+}
+
+
 # module for creating VPC
 module "VPC" {
   source               = "./module/VPC"
@@ -141,7 +173,7 @@ output "ami_id" {
   value = module.ec2_instances.ami_id
 }
 
-resource "aws_instance" "example" {
+resource "aws_instance" "SHALI-POD-B-JAN2025" {
   ami           = module.packer_ami.ami_id
   instance_type = "t2.micro"
 
