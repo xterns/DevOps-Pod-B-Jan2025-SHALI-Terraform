@@ -34,4 +34,3 @@ This repository contains Terraform scripts for managing the infrastructure for t
 5. Run a plan to preview changes:
     ```bash
     terraform plan
->>>>>>> folder
