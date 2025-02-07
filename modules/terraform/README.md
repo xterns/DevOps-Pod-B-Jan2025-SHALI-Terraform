@@ -1,5 +1,4 @@
 # DevOps-Pod-B-Jan2025-SHALI-Terraform
-
 # SHALI Terraform Repository
 
 This repository contains Terraform scripts for managing the infrastructure for the SHALI project.
