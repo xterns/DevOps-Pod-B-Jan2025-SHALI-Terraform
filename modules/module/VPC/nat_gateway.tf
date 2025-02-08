@@ -1,10 +1,5 @@
 resource "aws_eip" "nat_eip" {
-<<<<<<< HEAD:modules/terraform/modules/VPC/natgateway.tf
-   domain = "vpc"
-  depends_on = [aws_internet_gateway.narbyd-ig]
-=======
   depends_on = [aws_internet_gateway.shali-ig]
->>>>>>> fecd32694eae0c79155d0df99788dbbdfa046bd3:modules/terraform/modules/VPC/nat_gateway.tf
 
   tags = merge(
     var.tags,
@@ -28,14 +23,5 @@ resource "aws_nat_gateway" "nat" {
   )
 }
 
-resource "aws_internet_gateway" "shali-ig" {
-  vpc_id = aws_vpc.shali-vpc.id
 
-  tags = merge(
-    var.tags,
-    {
-      Name = format("%s-%s", var.name, "IG")
-    }
-  )
-}
 

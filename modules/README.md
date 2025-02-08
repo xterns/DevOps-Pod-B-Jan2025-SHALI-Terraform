@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # DevOps-Pod-B-Jan2025-SHALI-Terraform
 
 # SHALI Terraform Repository
@@ -35,9 +34,4 @@ This repository contains Terraform scripts for managing the infrastructure for t
 5. Run a plan to preview changes:
     ```bash
     terraform plan
-<<<<<<< HEAD
-=======
 >>>>>>> folder
-=======
-# DevOps-Pod-B-Jan2025-SHALI-Terraform
->>>>>>> 0d27b584e4b6b6f02ede319ecbf63115574f6337
