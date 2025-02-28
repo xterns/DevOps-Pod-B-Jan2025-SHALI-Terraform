@@ -38,3 +38,12 @@ This repository contains Terraform scripts for managing the infrastructure for t
 >>>>>>> folder
 =======
 # DevOps-Pod-B-Jan2025-SHALI-Terraform
+
+## Prerequisites for the GitHub Actions CI/CD Pipeline
+
+This repository contains a GitHub Actions CI/CD pipeline for managing Terraform infrastructure, automating changes, and ensuring secure execution with manual approvals for production.
+
+- **Triggers:** Runs on push events to feature* (sandbox) and main (production), and pull requests to main for review. Hence any branch that is not main must be named starting with the prefix 'feature' in other for the workflow to be triggered on push from it. 
+- **Process:** Includes Terraform init, validate, plan, and apply steps, with manual approval required for production changes.
+- **Environment Handling:** Automatically applies changes to sandbox on feature branches, plans but requires approval for production on main. A backend.tf file referencing an s3 bucket, must be present in each environment's directory in other to maintain the authenticity of the statefile for each environment. Update the different backend.tf files with it's appropriate s3 bucket name. 
+- **Manual Approval:** For production, an issue is created for approval, requiring at least 2 assignees to comment "yes" within 60 minutes.

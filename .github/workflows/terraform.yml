@@ -1,0 +1,171 @@
+name: Terraform
+on:
+  push:
+    branches:
+      - main
+      - "feature**"
+  pull_request:
+    branches:
+      - main
+      
+  
+jobs:  
+  DeploySandbox:
+    name: 'Deploy to Sandbox'
+    if: startsWith( github.ref_name, 'feature' )
+    runs-on: ubuntu-latest
+    environment: 
+      name: sandbox
+    
+    steps:
+    - name: Checkout
+      uses: actions/checkout@v4
+
+    - name: Setup AWS CLI
+      uses: aws-actions/setup-sam@v2
+      with:
+        use-installer: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1         
+
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3  
+      
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init  
+      run: terraform init 
+      working-directory: ${{ vars.TF_ACTIONS_WORKING_DIR }}
+
+    - name: Validate Terraform configuration
+      run: terraform validate
+      working-directory: ${{vars .TF_ACTIONS_WORKING_DIR }}
+
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: terraform plan -input=false
+      working-directory: ${{ vars.TF_ACTIONS_WORKING_DIR }}
+
+      # On push to "main", build or change infrastructure according to Terraform configuration files
+    - name: Terraform Apply
+      run: terraform apply -auto-approve -input=false
+      working-directory: ${{ vars.TF_ACTIONS_WORKING_DIR }}
+  
+  DeployStaging:
+    name: 'Deploy to Staging'
+    runs-on: ubuntu-latest
+    environment: 
+      name: staging
+    
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup AWS CLI
+      uses: aws-actions/setup-sam@v2
+      with:
+        use-installer: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1         
+
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init 
+      run: terraform init
+      working-directory: ${{ vars.TF_ACTIONS_WORKING_DIR }} 
+
+    - name: Validate Terraform configuration
+      run: terraform validate
+      working-directory: ${{ vars.TF_ACTIONS_WORKING_DIR }}
+
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: terraform plan -input=false
+      working-directory: ${{ vars.TF_ACTIONS_WORKING_DIR }}
+
+   # - name: Terraform Apply
+    #  if: github.ref == 'refs/heads/"main"'
+     # run: terraform apply -auto-approve -input=false ${{ env.TF_ACTIONS_WORKING_DIR }}
+  
+
+  
+
+
+  DeployProduction:
+    name: 'Deploy to Production'
+    runs-on: ubuntu-latest
+    environment: 
+      name: production
+       
+    steps:
+    # Checkout the repository to the GitHub Actions runner
+    - name: Checkout
+      uses: actions/checkout@v4
+      
+    - name: Setup AWS CLI
+      uses: aws-actions/setup-sam@v2
+      with:
+        use-installer: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1         
+
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init 
+      run: terraform init 
+      working-directory: ${{ vars.TF_ACTIONS_WORKING_DIR }}
+
+    - name: Validate Terraform configuration
+      run: terraform validate 
+      working-directory: ${{ vars.TF_ACTIONS_WORKING_DIR }}
+  
+    
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: terraform plan -input=false 
+      working-directory: ${{ vars.TF_ACTIONS_WORKING_DIR }}
+
+    # On push to "main", approval will be required
+    - name: Request Manual Approval
+      if: github.ref == 'refs/heads/"main"'
+      uses: trstringer/manual-approval@v1
+      with:
+        secret: ${{ github.TOKEN }}
+        approvers: ${{ vars.ASSIGNEES }}
+        minimum-approvals: 2
+        issue-title: "Deploying v1.3.5 to prod from staging"
+        issue-body: "Please approve or deny the deployment of version v1.3.5."
+        exclude-workflow-initiator-as-approver: false
+        fail-on-denial: true
+        additional-approved-words: 'yes'
+        additional-denied-words: 'no'
+      
+      # On push to "main", build or change infrastructure according to Terraform configuration files
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/"main"'
+      run: terraform apply -auto-approve -input=false 
+      working-directory: ${{ vars.TF_ACTIONS_WORKING_DIR }}
+      
+
+      
+
+  
