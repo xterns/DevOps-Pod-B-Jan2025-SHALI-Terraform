@@ -24,6 +24,6 @@ variable "instance_name" {
 }
 
 variable "environment" {
-  description = "Deployment Environment"
+  description = "sandbox Environment"
   type        = string
 }

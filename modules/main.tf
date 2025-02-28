@@ -1,4 +1,5 @@
-module "ec2_instance" {
+module "ec2-instance" {
+  
   source            = "./modules/ec2-instance"
   instance_type     = var.instance_type
   key_pair_name     = var.key_pair_name
