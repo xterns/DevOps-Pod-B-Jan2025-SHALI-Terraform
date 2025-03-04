@@ -33,12 +33,24 @@ jobs:
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
+
+    - name: Determine Environment
+        id: env
+        run: |
+          if [[ "${{ github.ref }}" == "refs/heads/main" ]]; then
+            echo "ENV=production" >> $GITHUB_ENV
+          
+          else
+            echo "ENV=test" >> $GITHUB_ENV
+          fi
+   
       
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init
-      run: terraform init
+      run: terraform init ./${{ env.ENV }}
+
 
     # Checks that all Terraform configuration files adhere to a canonical format
     - name: Terraform Destroy
-      run: terraform destroy -auto-approve
+      run: terraform destroy -auto-approve ./${{ env.ENV }}

@@ -1,26 +1,22 @@
-name: tfsec
+name: Terraform
 on:
   #push:
    # branches:
-    #  - main
+    #  - "**"
   #pull_request:
    # branches:
-    #  - main
+    #  - "**"
   workflow_dispatch:
     branches:
-      - main
+      - "**"
 
   
 jobs:
   
-
-
-  terraform:
-    name: 'Terraform'
+  Build:
+    
     runs-on: ubuntu-latest
-  #  environment: .
 
-    # Use the Bash shell regardless whether the GitHub Actions runner is ubuntu-latest, macos-latest, or windows-latest
     defaults:
       run:
         shell: bash
@@ -30,6 +26,20 @@ jobs:
     - name: Checkout
       uses: actions/checkout@v4
 
+
+
+  DeploySandbox:
+    name: 'Deploy to Sandbox'
+    if: startsWith( GITHUB_REF_NAME, 'feature' )
+    needs: Build
+    runs-on: ubuntu-latest
+    environment: 
+      name: sandbox
+    defaults:
+      run:
+        shell: bash
+
+    steps:
     - name: Setup AWS CLI
       uses: aws-actions/setup-sam@v2
       with:
@@ -39,35 +49,128 @@ jobs:
       with:
         aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
         aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
-        aws-region: us-west-2         
+        aws-region: us-east-1         
 
     # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
     - name: Setup Terraform
       uses: hashicorp/setup-terraform@v3
       
-
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
-    - name: Terraform Init
-      run: terraform init
+    - name: Terraform Init 
+      run: terraform init ./${{ env.ENV }}
 
-    # Checks that all Terraform configuration files adhere to a canonical format
-   # - name: Terraform Format
-    #  run: terraform fmt -check
+    - name: Validate Terraform configuration
+      run: terraform validate ./${{ env.ENV }}
+  
     
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false
+      run: terraform plan -input=false ./${{ env.ENV }}
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
-      # Note: It is recommended to set up a required "strict" status check in your repository for "Terraform Cloud". See the documentation on "strict" required status checks for more information: https://help.github.com/en/github/administering-a-repository/types-of-required-status-checks
     - name: Terraform Apply
-     # if: github.ref == 'refs/heads/"main"' && github.event_name == 'push'
-      run: terraform apply -auto-approve -input=false
+      run: terraform apply -auto-approve -input=false ./${{ env.ENV }}
+  
+  DeployStaging:
+    name: 'Deploy to Staging'
+    needs: Build
+    runs-on: ubuntu-latest
+    environment: 
+      name: staging
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Setup AWS CLI
+      uses: aws-actions/setup-sam@v2
+      with:
+        use-installer: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1         
+
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+      
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init 
+      run: terraform init ./${{ env.ENV }}
+
+    - name: Validate Terraform configuration
+      run: terraform validate ./${{ env.ENV }}
   
     
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: terraform plan -input=false ./${{ env.ENV }}
+
+   # - name: Terraform Apply
+    #  if: github.ref == 'refs/heads/"main"'
+     # run: terraform apply -auto-approve -input=false ./${{ env.ENV }}
+  
+
+  
 
 
-        
+  DeployProduction:
+    name: 'Deploy to Production'
+    needs: Build
+    runs-on: ubuntu-latest
+    environment: 
+      name: production
+    defaults:
+      run:
+        shell: bash
+
+    steps:
+    - name: Setup AWS CLI
+      uses: aws-actions/setup-sam@v2
+      with:
+        use-installer: true
+        token: ${{ secrets.GITHUB_TOKEN }}
+    - uses: aws-actions/configure-aws-credentials@v2
+      with:
+        aws-access-key-id: ${{ secrets.AWS_ACCESS_KEY_ID }}
+        aws-secret-access-key: ${{ secrets.AWS_SECRET_ACCESS_KEY }}
+        aws-region: us-east-1         
+
+    # Install the latest version of Terraform CLI and configure the Terraform CLI configuration file with a Terraform Cloud user API token
+    - name: Setup Terraform
+      uses: hashicorp/setup-terraform@v3
+
+    # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
+    - name: Terraform Init 
+      run: terraform init ./${{ env.ENV }}
+
+    - name: Validate Terraform configuration
+      run: terraform validate ./${{ env.ENV }}
+  
+    
+    # Generates an execution plan for Terraform
+    - name: Terraform Plan
+      run: terraform plan -input=false ./${{ env.ENV }}
+
+    # On push to "main", approval will be required
+    - id: list-maintainers
+      if: github.ref == 'refs/heads/"main"'
+      run: echo "maintainers='danny, ricky, bobby'" >> $GITHUB_ENV
+
+    - uses: peternied/required-approval@v1.3
+      with:
+        token: ${{ secrets.GITHUB_TOKEN }}
+        min-required: 1
+        required-approvers-list: ${{ steps.list-maintainers.outputs.maintainers }}  
+
+      # On push to "main", build or change infrastructure according to Terraform configuration files
+    - name: Terraform Apply
+      if: github.ref == 'refs/heads/"main"'
+      run: terraform apply -auto-approve -input=false ./${{ env.ENV }}
+      
 
       
 
