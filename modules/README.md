@@ -45,7 +45,7 @@ terraform-project/
 Create a Terraform module in `modules/ec2/` to provision EC2 instances.
 
 #### "modules/ec2/main.tf"
-```hcl
+<!-- ```hcl
 resource "aws_instance" "ec2" {
   ami                    = data.aws_ami.latest_packer.id
   instance_type          = var.instance_type
@@ -59,7 +59,7 @@ resource "aws_instance" "ec2" {
   }
 }
 
-```
+``` -->
 
 
 
@@ -82,7 +82,7 @@ data "aws_ami" "latest_packer" {
 ### Step 3: Use the Module in `main.tf`
 In the `environments/stage/main.tf` file, call the EC2 module and pass the dynamically retrieved AMI ID.
 
-```hcl
+<!-- ```hcl
 module "ec2" {
   source              = "../modules/ec2"
   ami_id              = data.aws_ami.latest_packer.id
@@ -92,13 +92,13 @@ module "ec2" {
   security_group_ids  = var.security_group_ids
   instance_name       = "EC2 instance type"
 }
-```
+``` -->
 
 ### Step 4: Define Environment-Specific Configurations
 Each environment should have its own `terraform.tfvars` file to store configurable values.
 
 #### `environments/sandbox/terraform.tfvars`
-```hcl
+<!-- ```hcl
 instance_type     = "t2.micro"
 key_pair_name     = "sandbox-key"
 subnet_id         = "subnet-12345678"
@@ -106,15 +106,15 @@ security_group_ids = ["sg-abcdefgh"]
 instance_name     = "sandbox-instance"
 environment       = "sandbox"
  
-```
+``` -->
 
 #### `environments/prod/terraform.tfvars`
-```hcl
+<!-- ```hcl
 instance_type = "t2.large"
 key_name = "my-prod-keypair"
 subnet_id = "subnet-abcdef"
 security_group_ids = ["sg-112233"]
-```
+``` -->
 
 ### Step 5: Apply the Terraform Configuration
 Run the following Terraform commands:
