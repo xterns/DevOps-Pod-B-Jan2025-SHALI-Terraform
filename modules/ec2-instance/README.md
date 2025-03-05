@@ -44,37 +44,24 @@ terraform-project/
 ### Step 1: Define the Terraform Module
 Create a Terraform module in `modules/ec2/` to provision EC2 instances.
 
-#### `modules/ec2/main.tf`
+#### "modules/ec2/main.tf"
 ```hcl
-resource "aws_instance" "this" {
-  ami           = var.ami_id
-  instance_type = var.instance_type
-  key_name      = var.key_name
-  subnet_id     = var.subnet_id
+resource "aws_instance" "ec2" {
+  ami                    = data.aws_ami.latest_packer.id
+  instance_type          = var.instance_type
+  key_name               = var.key_pair_name
+  subnet_id              = var.subnet_id
   vpc_security_group_ids = var.security_group_ids
 
   tags = {
     Name = var.instance_name
+    Environment = var.environment
   }
 }
+
 ```
 
-#### `modules/ec2/variables.tf`
-```hcl
-variable "ami_id" {}
-variable "instance_type" {}
-variable "key_name" {}
-variable "subnet_id" {}
-variable "security_group_ids" {}
-variable "instance_name" {}
-```
 
-#### `modules/ec2/outputs.tf`
-```hcl
-output "instance_id" {
-  value = aws_instance.this.id
-}
-```
 
 ### Step 2: Retrieve the Latest AMI ID Dynamically
 Use Terraform data sources to retrieve the latest AMI ID filtered by a specific Packer tag.
@@ -103,24 +90,27 @@ module "ec2" {
   key_name            = var.key_name
   subnet_id           = var.subnet_id
   security_group_ids  = var.security_group_ids
-  instance_name       = "dev-instance"
+  instance_name       = "EC2 instance type"
 }
 ```
 
 ### Step 4: Define Environment-Specific Configurations
 Each environment should have its own `terraform.tfvars` file to store configurable values.
 
-#### `environments/dev/terraform.tfvars`
+#### `environments/sandbox/terraform.tfvars`
 ```hcl
-instance_type = "t3.micro"
-key_name = "my-keypair"
-subnet_id = "subnet-12345"
-security_group_ids = ["sg-67890"]
+instance_type     = "t2.micro"
+key_pair_name     = "sandbox-key"
+subnet_id         = "subnet-12345678"
+security_group_ids = ["sg-abcdefgh"]
+instance_name     = "sandbox-instance"
+environment       = "sandbox"
+ 
 ```
 
 #### `environments/prod/terraform.tfvars`
 ```hcl
-instance_type = "t3.large"
+instance_type = "t2.large"
 key_name = "my-prod-keypair"
 subnet_id = "subnet-abcdef"
 security_group_ids = ["sg-112233"]
@@ -130,7 +120,7 @@ security_group_ids = ["sg-112233"]
 Run the following Terraform commands:
 
 ```sh
-cd environments/dev
+cd environments/module
 terraform init
 terraform plan -var-file=terraform.tfvars
 terraform apply -var-file=terraform.tfvars -auto-approve
