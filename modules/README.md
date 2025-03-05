@@ -1,4 +1,4 @@
-# Terraform EC2 Module with Dynamic AMI Retrieval
+<!-- # Terraform EC2 Module with Dynamic AMI Retrieval
 
 ## Overview
 This Terraform module provisions EC2 instances using dynamically retrieved AMI IDs. The AMI IDs are filtered to retrieve the latest build created with Packer. The module is designed to be reusable across different environments (sandbox, staging, production).
@@ -62,12 +62,12 @@ resource "aws_instance" "ec2" {
 ``` -->
 
 
-
+<!-- 
 ### Step 2: Retrieve the Latest AMI ID Dynamically
-Use Terraform data sources to retrieve the latest AMI ID filtered by a specific Packer tag.
+<!-- Use Terraform data sources to retrieve the latest AMI ID filtered by a specific Packer tag. -->
 
-#### `data-sources.tf`
-```hcl
+<!-- #### `data-sources.tf` --> -->
+<!-- ```hcl
 data "aws_ami" "latest_packer" {
   most_recent = true
   owners      = ["self"] # Adjust the owner ID if needed
@@ -80,7 +80,7 @@ data "aws_ami" "latest_packer" {
 ```
 
 ### Step 3: Use the Module in `main.tf`
-In the `environments/stage/main.tf` file, call the EC2 module and pass the dynamically retrieved AMI ID.
+<!-- In the `environments/stage/main.tf` file, call the EC2 module and pass the dynamically retrieved AMI ID. -->
 
 <!-- ```hcl
 module "ec2" {
@@ -94,10 +94,10 @@ module "ec2" {
 }
 ``` -->
 
-### Step 4: Define Environment-Specific Configurations
+<!-- ### Step 4: Define Environment-Specific Configurations
 Each environment should have its own `terraform.tfvars` file to store configurable values.
 
-#### `environments/sandbox/terraform.tfvars`
+#### `environments/sandbox/terraform.tfvars` -->
 <!-- ```hcl
 instance_type     = "t2.micro"
 key_pair_name     = "sandbox-key"
@@ -108,7 +108,7 @@ environment       = "sandbox"
  
 ``` -->
 
-#### `environments/prod/terraform.tfvars`
+<!-- #### `environments/prod/terraform.tfvars` -->
 <!-- ```hcl
 instance_type = "t2.large"
 key_name = "my-prod-keypair"
@@ -116,7 +116,7 @@ subnet_id = "subnet-abcdef"
 security_group_ids = ["sg-112233"]
 ``` -->
 
-### Step 5: Apply the Terraform Configuration
+<!-- ### Step 5: Apply the Terraform Configuration
 Run the following Terraform commands:
 
 ```sh
@@ -139,5 +139,5 @@ terraform destroy -var-file=terraform.tfvars -auto-approve
 ```
 
 ## Conclusion
-This Terraform module allows DevOps engineers to dynamically retrieve the latest Packer-built AMI and provision EC2 instances efficiently across multiple environments. By structuring the project modularly, reusability and maintainability are ensured.
-
+This Terraform module allows DevOps engineers to dynamically retrieve the latest Packer-built AMI and provision EC2 instances efficiently across multiple environments. By structuring the project modularly, reusability and maintainability are ensured. -->
+ --> -->
