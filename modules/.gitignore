@@ -2,9 +2,6 @@
 *.tfstate
 *.tfstate.backup
 
-# Ignore logs
-*.log
-
 # Ignore Terraform plan files
 *.tfplan
 
