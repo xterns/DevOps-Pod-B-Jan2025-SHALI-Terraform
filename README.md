@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 # DevOps-Pod-B-Jan2025-SHALI-Terraform
 
 # SHALI Terraform Repository
@@ -35,9 +34,20 @@ This repository contains Terraform scripts for managing the infrastructure for t
 5. Run a plan to preview changes:
     ```bash
     terraform plan
-<<<<<<< HEAD
-=======
->>>>>>> folder
-=======
-# DevOps-Pod-B-Jan2025-SHALI-Terraform
->>>>>>> 0d27b584e4b6b6f02ede319ecbf63115574f6337
+
+## Changelog
+
+This repository follows the [Keep a Changelog](https://keepachangelog.com/en/1.0.0/) format.
+
+### Updating the Changelog
+
+- Before merging a PR, update `CHANGELOG.md` under the relevant section.
+- Follow the format:
+  - **Added**: For new features.
+  - **Changed**: For modifications.
+  - **Deprecated**: For soon-to-be removed features.
+  - **Removed**: For now-removed features.
+  - **Fixed**: For bug fixes.
+  - **Security**: For security patches.
+- Reference the relevant issue or PR number.
+
