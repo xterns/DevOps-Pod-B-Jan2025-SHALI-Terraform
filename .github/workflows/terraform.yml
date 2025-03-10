@@ -63,7 +63,10 @@ jobs:
 
     - name: Validate Terraform configuration
       run: terraform validate ${{ env.tf_actions_working_dir }}
-  
+      
+    - name: List Files
+      run: ls -la ${{ env.tf_actions_working_dir }}
+        # working-directory: ./terraform  # Match this to your intended directory
     
     # Generates an execution plan for Terraform
     - name: Terraform Plan
