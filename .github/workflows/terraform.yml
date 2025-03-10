@@ -84,7 +84,6 @@ jobs:
       name: staging
     defaults:
       run:
-        working-directory: ${{ env.tf_actions_working_dir }}
         shell: bash
 
     steps:
@@ -105,19 +104,19 @@ jobs:
       
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init 
-      run: terraform init
+      run: terraform init ${{ env.tf_actions_working_dir }}
 
     - name: Validate Terraform configuration
-      run: terraform validate 
+      run: terraform validate ${{ env.tf_actions_working_dir }}
   
     
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false 
+      run: terraform plan -input=false ${{ env.tf_actions_working_dir }}
 
    # - name: Terraform Apply
     #  if: github.ref == 'refs/heads/"main"'
-     # run: terraform apply -auto-approve -input=false 
+     # run: terraform apply -auto-approve -input=false ${{ env.tf_actions_working_dir }}
   
 
   
@@ -131,7 +130,6 @@ jobs:
       name: production
     defaults:
       run:
-        working-directory: ${{ env.tf_actions_working_dir }}
         shell: bash
 
     steps:
@@ -152,15 +150,15 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init 
-      run: terraform init 
+      run: terraform init ${{ env.tf_actions_working_dir }}
 
     - name: Validate Terraform configuration
-      run: terraform validate 
+      run: terraform validate ${{ env.tf_actions_working_dir }}
   
     
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false 
+      run: terraform plan -input=false ${{ env.tf_actions_working_dir }}
 
     # On push to "main", approval will be required
     - id: list-maintainers
@@ -176,7 +174,7 @@ jobs:
       # On push to "main", build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
       #if: github.ref == 'refs/heads/"main"'
-      run: terraform apply -auto-approve -input=false 
+      run: terraform apply -auto-approve -input=false ${{ env.tf_actions_working_dir }}
       
 
       
