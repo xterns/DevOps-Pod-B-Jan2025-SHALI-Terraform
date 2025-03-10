@@ -1,3 +1,9 @@
+variable "aws_profile" {
+  description = "AWS CLI profile name (optional)"
+  type        = string
+  default     = "default"
+}
+
 variable "instance_type" {
   description = "EC2 instance type"
   type        = string
@@ -29,9 +35,9 @@ variable "environment" {
   type        = string
 }
 
-variable "aws_region" {
-  description = "AWS region for resources"
-  type        = string
-  default     = "us-east-1"
-}
+# variable "aws_region" {
+#   description = "AWS region for resources"
+#   type        = string
+#   default     = "us-east-1"
+# }
 
