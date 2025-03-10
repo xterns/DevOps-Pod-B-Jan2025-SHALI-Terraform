@@ -1,3 +1,7 @@
+provider "aws" {
+    region = "us-east-1"
+}
+
 data "aws_ami" "latest_packer" {
   most_recent = true
   owners      = ["self"] # Change to AWS account ID if needed
