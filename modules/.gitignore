@@ -1,0 +1,15 @@
+# Ignore Terraform state files
+*.tfstate
+*.tfstate.backup
+
+# Ignore Terraform plan files
+*.tfplan
+
+# Ignore provider-specific files
+.terraform/
+.terraform.lock.hcl
+
+# Ignore AWS credentials and config files (if stored in repo)
+*.pem
+*.key
+.aws/
