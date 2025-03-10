@@ -31,7 +31,7 @@ jobs:
 
   DeploySandbox:
     name: 'Deploy to Sandbox'
-    if: startsWith( GITHUB_REF_NAME, 'feature' )
+    if: startsWith( github.ref_name, 'feature' )
     needs: Build
     runs-on: ubuntu-latest
     environment: 
