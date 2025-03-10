@@ -1,11 +1,11 @@
 name: Terraform
 on:
-  #push:
-   # branches:
-    #  - "**"
-  #pull_request:
-   # branches:
-    #  - "**"
+  push:
+    branches:
+      - "**"
+  pull_request:
+    branches:
+      - "**"
   workflow_dispatch:
     branches:
       - "**"
