@@ -59,11 +59,11 @@ jobs:
       
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init 
-      run: terraform init ../../environments/sandbox
+      run: terraform init ./environments/sandbox
 
 
     - name: Validate Terraform configuration
-      run: terraform validate ../../environments/sandbox
+      run: terraform validate ./environments/sandbox
 
       
     - name: List Files
@@ -73,11 +73,11 @@ jobs:
     
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false ../../environments/sandbox
+      run: terraform plan -input=false ./environments/sandbox
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
-      run: terraform apply -auto-approve -input=false ../../environments/sandbox
+      run: terraform apply -auto-approve -input=false ./environments/sandbox
   
   DeployStaging:
     name: 'Deploy to Staging'
