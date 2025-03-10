@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 module "ec2_instance" {
-  source            = "../modules/ec2-instance"
+  source            = "../../modules/ec2-instance"
   instance_type     = "t2.micro"
   key_pair_name     = "shali-terraform"
   subnet_id         = "subnet-06f49aad9fd2d74bf"
