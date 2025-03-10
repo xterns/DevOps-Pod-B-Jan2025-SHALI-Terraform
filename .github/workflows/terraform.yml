@@ -58,19 +58,19 @@ jobs:
       
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init 
-      run: terraform init ./${{ var.ENV }}
+      run: terraform init ./${{ env.ENV }}
 
     - name: Validate Terraform configuration
-      run: terraform validate ./${{ var.ENV }}
+      run: terraform validate ./${{ env.ENV }}
   
     
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false ./${{ var.ENV }}
+      run: terraform plan -input=false ./${{ env.ENV }}
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
-      run: terraform apply -auto-approve -input=false ./${{ var.ENV }}
+      run: terraform apply -auto-approve -input=false ./${{ env.ENV }}
   
   DeployStaging:
     name: 'Deploy to Staging'
@@ -100,19 +100,19 @@ jobs:
       
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init 
-      run: terraform init ./${{ var.ENV }}
+      run: terraform init ./${{ env.ENV }}
 
     - name: Validate Terraform configuration
-      run: terraform validate ./${{ var.ENV }}
+      run: terraform validate ./${{ env.ENV }}
   
     
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false ./${{ var.ENV }}
+      run: terraform plan -input=false ./${{ env.ENV }}
 
    # - name: Terraform Apply
     #  if: github.ref == 'refs/heads/"main"'
-     # run: terraform apply -auto-approve -input=false ./${{ var.ENV }}
+     # run: terraform apply -auto-approve -input=false ./${{ env.ENV }}
   
 
   
@@ -146,15 +146,15 @@ jobs:
 
     # Initialize a new or existing Terraform working directory by creating initial files, loading any remote state, downloading modules, etc.
     - name: Terraform Init 
-      run: terraform init ./${{ var.ENV }}
+      run: terraform init ./${{ env.ENV }}
 
     - name: Validate Terraform configuration
-      run: terraform validate ./${{ var.ENV }}
+      run: terraform validate ./${{ env.ENV }}
   
     
     # Generates an execution plan for Terraform
     - name: Terraform Plan
-      run: terraform plan -input=false ./${{ var.ENV }}
+      run: terraform plan -input=false ./${{ env.ENV }}
 
     # On push to "main", approval will be required
     - id: list-maintainers
@@ -169,8 +169,8 @@ jobs:
 
       # On push to "main", build or change infrastructure according to Terraform configuration files
     - name: Terraform Apply
-      if: github.ref == 'refs/heads/"main"'
-      run: terraform apply -auto-approve -input=false ./${{ var.ENV }}
+      #if: github.ref == 'refs/heads/"main"'
+      run: terraform apply -auto-approve -input=false ./${{ env.ENV }}
       
 
       
